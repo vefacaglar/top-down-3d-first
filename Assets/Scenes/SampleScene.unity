@@ -505,6 +505,7 @@ MonoBehaviour:
   rotationSpeed: 450
   walkSpeed: 5
   runSpeed: 8
+  gun: {fileID: 1962122651}
 --- !u!143 &516198178
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1177,6 +1178,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1788848636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1191362378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191362379}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1191362379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191362378}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.452}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1962122647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1649862350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1435,7 @@ GameObject:
   - component: {fileID: 1962122650}
   - component: {fileID: 1962122649}
   - component: {fileID: 1962122648}
+  - component: {fileID: 1962122651}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -1422,7 +1455,8 @@ Transform:
   m_LocalPosition: {x: 0.214, y: 0, z: 0.381}
   m_LocalScale: {x: 0.28916147, y: 0.28642988, z: 1.0825421}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1191362379}
   m_Father: {fileID: 1893724337}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1962122648
@@ -1503,6 +1537,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962122646}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1962122651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962122646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d5f822bcb11243d2bca3954f38aa51b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gun
+  spawn: {fileID: 1191362379}
+  type: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

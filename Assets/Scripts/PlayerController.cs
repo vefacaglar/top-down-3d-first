@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Quaternion targetRotation;
     private Camera mainCamera;
+    public Gun gun;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +24,15 @@ public class PlayerController : MonoBehaviour
     {
         ControlerMouse();
         // ControlWASD();
+
+        if (Input.GetButtonDown("Shoot"))
+        {
+            gun.Shoot();
+        }
+        else if (Input.GetButton("Shoot"))
+        {
+            gun.ShootContinuous();
+        }
     }
 
     void ControlerMouse()
