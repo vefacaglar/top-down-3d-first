@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -10,12 +12,14 @@ public class Gun : MonoBehaviour
     private float secondsBetweenShots;
     private float nextPossibleShoot;
 
+    private LineRenderer tracer;
     private AudioSource audioSource;
 
     private void Start()
     {
         secondsBetweenShots = 60f / rpm;
         audioSource = GetComponent<AudioSource>();
+        tracer = GetComponent<LineRenderer>();
     }
 
     public void Shoot()
@@ -33,7 +37,13 @@ public class Gun : MonoBehaviour
         }
 
         nextPossibleShoot = Time.time + secondsBetweenShots;
-        audioSource.PlayOneShot(audioSource.clip);
+        // audioSource.PlayOneShot(audioSource.clip);
+        audioSource.Play();
+
+        if (tracer != null)
+        {
+            StartCoroutine("RenderTracer", ray.direction * range);
+        }
     }
 
     public void ShootContinuous()
@@ -55,6 +65,16 @@ public class Gun : MonoBehaviour
 
         return canShoot;
     }
+
+    IEnumerator RenderTracer(Vector3 hitPoint)
+    {
+        tracer.enabled = true;
+        tracer.SetPosition(0, spawn.position);
+        tracer.SetPosition(1, spawn.position + hitPoint);
+        yield return null;
+        tracer.enabled = false;
+    }
+
 }
 
 public enum GunType
